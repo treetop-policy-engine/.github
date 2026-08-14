@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title">
+  <title id="title">Treetop branching canopy</title>
+  <g fill="none" stroke="#F6F0DF" stroke-linecap="round" stroke-linejoin="round" stroke-width="22">
+    <path d="M128 222V121"/>
+    <path d="m128 151-54-69"/>
+    <path d="m128 151 54-69"/>
+    <path d="m128 179-77-47"/>
+    <path d="m128 179 77-47"/>
+  </g>
+  <g fill="#F6F0DF">
+    <circle cx="128" cy="48" r="27"/>
+    <circle cx="74" cy="82" r="23"/>
+    <circle cx="182" cy="82" r="23"/>
+    <circle cx="51" cy="132" r="21"/>
+    <circle cx="205" cy="132" r="21"/>
+  </g>
+</svg>

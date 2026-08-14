@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title">
+  <title id="title">Treetop organization avatar</title>
+  <rect width="256" height="256" rx="48" fill="#F6F0DF"/>
+  <g transform="translate(28 24) scale(.78)">
+    <g fill="none" stroke="#0F3D2E" stroke-linecap="round" stroke-linejoin="round" stroke-width="22">
+      <path d="M128 222V121"/>
+      <path d="m128 151-54-69"/>
+      <path d="m128 151 54-69"/>
+      <path d="m128 179-77-47"/>
+      <path d="m128 179 77-47"/>
+    </g>
+    <g fill="#0F3D2E">
+      <circle cx="128" cy="48" r="27"/>
+      <circle cx="74" cy="82" r="23"/>
+      <circle cx="182" cy="82" r="23"/>
+      <circle cx="51" cy="132" r="21"/>
+      <circle cx="205" cy="132" r="21"/>
+    </g>
+  </g>
+</svg>
