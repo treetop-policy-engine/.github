@@ -4,25 +4,28 @@
 
 # Treetop Policy Engine
 
-Treetop is an open-source, Cedar-based authorization stack for building, validating, serving, and
-operating policy decisions.
+Treetop is an open-source authorization stack built on [Cedar](https://cedarpolicy.com/). It
+provides tools for building, validating, serving, and operating policy-based authorization.
 
-Use the engine directly from Rust, compose deterministic policy bundles, run Treetop as a REST
-service, integrate through an official client, or inspect it from the command line and browser
-workbench.
+Run Treetop as a REST service, integrate through an official client, compose deterministic policy
+bundles, or inspect the service from the command line and browser workbench. The Rust engine can
+also be embedded for specialized use cases.
 
 ## Projects
 
+These repositories are all maintained parts of Treetop, covering the runtime, policy delivery,
+client integrations, and operator tooling.
+
 | Project | Purpose | Distribution |
 | --- | --- | --- |
-| [treetop-core](https://github.com/treetop-policy-engine/treetop-core) | Embeddable Rust policy engine | [crate](https://crates.io/crates/treetop-core) · [docs](https://docs.rs/treetop-core) |
-| [treetop-bundle](https://github.com/treetop-policy-engine/treetop-bundle) | Deterministic, optionally signed Cedar policy bundles | [crate](https://crates.io/crates/treetop-bundle) · [docs](https://docs.rs/treetop-bundle) · [CLI archives](https://github.com/treetop-policy-engine/treetop-bundle/releases/latest) |
-| [treetop-bundle-action](https://github.com/treetop-policy-engine/treetop-bundle-action) | Policy validation and bundle builds in GitHub Actions | [`@v1` Action](https://github.com/treetop-policy-engine/treetop-bundle-action/tree/v1) · [releases](https://github.com/treetop-policy-engine/treetop-bundle-action/releases) |
 | [treetop-rest](https://github.com/treetop-policy-engine/treetop-rest) | REST API and standalone server | [server archives](https://github.com/treetop-policy-engine/treetop-rest/releases/latest) · [container](https://github.com/treetop-policy-engine/treetop-rest/pkgs/container/treetop-rest) |
 | [treetop-client](https://github.com/treetop-policy-engine/treetop-client) | Typed asynchronous Rust client | [crate](https://crates.io/crates/treetop-client) · [docs](https://docs.rs/treetop-client) |
 | [treetop-client-python](https://github.com/treetop-policy-engine/treetop-client-python) | Typed synchronous and asynchronous Python client | [PyPI](https://pypi.org/project/treetop-client/) |
 | [treetop-cli](https://github.com/treetop-policy-engine/treetop-cli) | Command-line client and interactive REPL | [native archives and checksums](https://github.com/treetop-policy-engine/treetop-cli/releases/latest) |
 | [treetop-frontend](https://github.com/treetop-policy-engine/treetop-frontend) | Browser workbench for policies, requests, and metrics | [static archive and checksum](https://github.com/treetop-policy-engine/treetop-frontend/releases/latest) · [container](https://github.com/treetop-policy-engine/treetop-frontend/pkgs/container/treetop-frontend) |
+| [treetop-bundle](https://github.com/treetop-policy-engine/treetop-bundle) | Deterministic, optionally signed Cedar policy bundles | [crate](https://crates.io/crates/treetop-bundle) · [docs](https://docs.rs/treetop-bundle) · [CLI archives](https://github.com/treetop-policy-engine/treetop-bundle/releases/latest) |
+| [treetop-bundle-action](https://github.com/treetop-policy-engine/treetop-bundle-action) | Policy validation and bundle builds in GitHub Actions | [`@v1` Action](https://github.com/treetop-policy-engine/treetop-bundle-action/tree/v1) · [releases](https://github.com/treetop-policy-engine/treetop-bundle-action/releases) |
+| [treetop-core](https://github.com/treetop-policy-engine/treetop-core) | Rust engine underlying Treetop REST, also available for in-process deployments | [crate](https://crates.io/crates/treetop-core) · [docs](https://docs.rs/treetop-core) |
 
 ## Release artifacts
 
