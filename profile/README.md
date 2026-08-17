@@ -4,22 +4,36 @@
 
 # Treetop Policy Engine
 
-Treetop is an open-source, Cedar-based authorization stack for embedding, serving, and operating
-policy decisions.
+Treetop is an open-source, Cedar-based authorization stack for building, validating, serving, and
+operating policy decisions.
 
-Use the engine directly from Rust, run it as a REST service, integrate through an official client,
-or inspect it from the command line and browser workbench.
+Use the engine directly from Rust, compose deterministic policy bundles, run Treetop as a REST
+service, integrate through an official client, or inspect it from the command line and browser
+workbench.
 
 ## Projects
 
 | Project | Purpose | Distribution |
 | --- | --- | --- |
-| [treetop-core](https://github.com/treetop-policy-engine/treetop-core) | Embeddable Rust policy engine | [crates.io](https://crates.io/crates/treetop-core) |
-| [treetop-rest](https://github.com/treetop-policy-engine/treetop-rest) | REST API and standalone server | [Releases](https://github.com/treetop-policy-engine/treetop-rest/releases) · [GHCR](https://github.com/treetop-policy-engine/treetop-rest/pkgs/container/treetop-rest) |
-| [treetop-client](https://github.com/treetop-policy-engine/treetop-client) | Typed asynchronous Rust client | [crates.io](https://crates.io/crates/treetop-client) |
+| [treetop-core](https://github.com/treetop-policy-engine/treetop-core) | Embeddable Rust policy engine | [crate](https://crates.io/crates/treetop-core) · [docs](https://docs.rs/treetop-core) |
+| [treetop-bundle](https://github.com/treetop-policy-engine/treetop-bundle) | Deterministic, optionally signed Cedar policy bundles | [crate](https://crates.io/crates/treetop-bundle) · [docs](https://docs.rs/treetop-bundle) · [CLI archives](https://github.com/treetop-policy-engine/treetop-bundle/releases/latest) |
+| [treetop-bundle-action](https://github.com/treetop-policy-engine/treetop-bundle-action) | Policy validation and bundle builds in GitHub Actions | [`@v1` Action](https://github.com/treetop-policy-engine/treetop-bundle-action/tree/v1) · [releases](https://github.com/treetop-policy-engine/treetop-bundle-action/releases) |
+| [treetop-rest](https://github.com/treetop-policy-engine/treetop-rest) | REST API and standalone server | [server archives](https://github.com/treetop-policy-engine/treetop-rest/releases/latest) · [container](https://github.com/treetop-policy-engine/treetop-rest/pkgs/container/treetop-rest) |
+| [treetop-client](https://github.com/treetop-policy-engine/treetop-client) | Typed asynchronous Rust client | [crate](https://crates.io/crates/treetop-client) · [docs](https://docs.rs/treetop-client) |
 | [treetop-client-python](https://github.com/treetop-policy-engine/treetop-client-python) | Typed synchronous and asynchronous Python client | [PyPI](https://pypi.org/project/treetop-client/) |
-| [treetop-cli](https://github.com/treetop-policy-engine/treetop-cli) | Command-line client and interactive REPL | [Releases](https://github.com/treetop-policy-engine/treetop-cli/releases) |
-| [treetop-frontend](https://github.com/treetop-policy-engine/treetop-frontend) | Browser workbench for policies, requests, and metrics | [Releases](https://github.com/treetop-policy-engine/treetop-frontend/releases) |
+| [treetop-cli](https://github.com/treetop-policy-engine/treetop-cli) | Command-line client and interactive REPL | [native archives and checksums](https://github.com/treetop-policy-engine/treetop-cli/releases/latest) |
+| [treetop-frontend](https://github.com/treetop-policy-engine/treetop-frontend) | Browser workbench for policies, requests, and metrics | [static archive and checksum](https://github.com/treetop-policy-engine/treetop-frontend/releases/latest) · [container](https://github.com/treetop-policy-engine/treetop-frontend/pkgs/container/treetop-frontend) |
+
+## Release artifacts
+
+| Artifact | Published formats |
+| --- | --- |
+| Treetop server | Linux x86-64 and ARM64 musl archives; container image |
+| Treetop CLI | Linux x86-64 and ARM64 musl, Apple-silicon macOS, and Windows x86-64 archives with SHA-256 checksums |
+| Bundle CLI | Linux x86-64 and ARM64 musl, Apple-silicon macOS, and Windows x86-64 archives with `SHA256SUMS` |
+| Workbench | Versioned static-site archive with a SHA-256 checksum; Linux AMD64 and ARM64 container image |
+| Libraries and clients | Rust crates on crates.io and the Python client on PyPI |
+| Bundle Action | Versioned GitHub Action, available through the moving `v1` major tag |
 
 ## Quick start
 
@@ -37,4 +51,14 @@ Then check process liveness:
 curl http://127.0.0.1:9999/livez
 ```
 
-Project-specific documentation, examples, and release notes live in each repository.
+Validate a policy bundle in GitHub Actions:
+
+```yaml
+- uses: treetop-policy-engine/treetop-bundle-action@v1
+  with:
+    manifest: treetop-bundle.toml
+    deny-warnings: true
+```
+
+Project-specific documentation, examples, compatibility information, and release notes live in
+each repository.
