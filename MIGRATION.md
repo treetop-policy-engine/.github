@@ -101,6 +101,6 @@ on each evaluation. Core's new cold target parsing cost is reported separately
 from registration and evaluation; benchmark boundaries must stay explicit.
 Go's required-field validation currently adds about 4–5% to local response-parse
 medians while retaining allocation counts. Python reports no CodSpeed regressions,
-but its comparison includes an environment warning, so the reported improvement
-is not treated as a controlled performance measurement. Each implementation PR
+but earlier comparisons included an environment warning, so the reported
+improvement is not treated as a controlled performance measurement. Each implementation PR
 contains its verification evidence and limitations.
