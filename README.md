@@ -8,7 +8,7 @@ Treetop is an open-source authorization stack built on
 [Cedar](https://cedarpolicy.com/). It separates access-control policy from application code and
 provides a consistent path from authoring and validation to deployment, evaluation, and operations.
 
-Most applications use Treetop through the standalone REST service. Official Rust and Python
+Most applications use Treetop through the standalone REST service. Official Rust, Go, and Python
 clients, a command-line client, and a browser workbench cover integration and day-to-day operation.
 The Rust engine powers the service and remains available for specialized deployments that require
 in-process evaluation.
@@ -17,7 +17,7 @@ in-process evaluation.
 
 - Make fine-grained authorization explicit, testable, and independent of application business
   logic.
-- Make centralized authorization straightforward to deploy and consume through a stable REST API
+- Make centralized authorization straightforward to deploy and consume through a strict REST API
   and typed clients.
 - Retain an embeddable Rust engine for specialized applications that need in-process evaluation.
 - Package independently owned policy modules into deterministic, verifiable release artifacts.
@@ -38,7 +38,7 @@ The wider toolchain provides:
 - optional Ed25519 signing and verification of policy bundles;
 - atomic bundle loading in the REST server;
 - authorization, policy, schema, bundle, OpenAPI, and metrics endpoints;
-- typed Rust and Python integrations;
+- typed Rust, Go, and Python integrations;
 - native command-line tools for authorization and bundle workflows;
 - a browser workbench for requests, policies, schemas, server status, and metrics; and
 - a GitHub Action for policy validation and unsigned bundle builds in CI.
@@ -58,6 +58,18 @@ Cedar policies, schemas, and labels
 Specialized Rust applications can use `treetop-core` directly when a separate service is not the
 right deployment model.
 
+## Coordinated breaking release
+
+The coordinated release adopts declared label ownership by exact Cedar resource type
+and attribute. Early Treetop releases prioritize correctness over compatibility;
+ambiguous ownership, deprecated aliases, and old-format defaults are removed.
+Bundle/module format 2 requires rebuilt and re-signed archives.
+
+Core, Bundle, REST, Rust/Python clients, CLI, and Workbench are released as 0.1.0;
+the Go client is 0.3.0 and Bundle Action is v2. See the
+[breaking migration and release set](./MIGRATION.md) for the new syntax, required consumer
+updates, published artifacts, and upgrade order.
+
 ## Projects
 
 All repositories below are maintained parts of the Treetop project. Together they provide the REST
@@ -68,6 +80,7 @@ runtime, policy engine and delivery pipeline, client integrations, and operator 
 | [treetop-rest](https://github.com/treetop-policy-engine/treetop-rest) | Standalone authorization server and REST API |
 | [treetop-client](https://github.com/treetop-policy-engine/treetop-client) | Typed asynchronous Rust client |
 | [treetop-client-python](https://github.com/treetop-policy-engine/treetop-client-python) | Typed synchronous and asynchronous Python client |
+| [treetop-client-go](https://github.com/treetop-policy-engine/treetop-client-go) | Typed Go client with validated requests and responses |
 | [treetop-cli](https://github.com/treetop-policy-engine/treetop-cli) | Command-line client and interactive REPL |
 | [treetop-frontend](https://github.com/treetop-policy-engine/treetop-frontend) | Browser workbench for Treetop servers |
 | [treetop-bundle](https://github.com/treetop-policy-engine/treetop-bundle) | Policy validation, composition, signing, and archive tooling |
@@ -85,5 +98,6 @@ This repository publishes organization-wide GitHub content:
 
 When updating the profile, keep the project catalog aligned with the organization's public
 repositories and published artifacts. Prefer durable links such as `/releases/latest`, registry
-project pages, GHCR package pages, and moving major tags for GitHub Actions. Use relative asset paths
+project pages, GHCR package pages, and reviewed immutable commits for GitHub Actions. Mark planned artifacts as
+unreleased instead of linking to tags that do not exist. Use relative asset paths
 and verify Markdown links before publishing changes.

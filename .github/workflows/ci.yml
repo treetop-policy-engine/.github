@@ -1,0 +1,40 @@
+name: Documentation
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  documentation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+      - name: Lint Markdown
+        run: npx --yes markdownlint-cli2@0.23.2 --config .markdownlint.json '**/*.md'
+      - name: Check local document and asset links
+        run: |
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';
+          import path from 'node:path';
+          function check(directory) {
+            for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+              if (entry.name === '.git') continue;
+              const file = path.join(directory, entry.name);
+              if (entry.isDirectory()) { check(file); continue; }
+              if (!file.endsWith('.md')) continue;
+              const text = fs.readFileSync(file, 'utf8');
+              for (const match of text.matchAll(/\]\(([^)]+)\)|src="([^"]+)"/g)) {
+                const link = match[1] ?? match[2];
+                if (link.includes('://') || link.startsWith('#')) continue;
+                const target = path.resolve(path.dirname(file), link.split('#')[0]);
+                if (!fs.existsSync(target)) throw new Error(`${file}: missing ${link}`);
+              }
+            }
+          }
+          check('.');
+          JS
