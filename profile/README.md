@@ -13,14 +13,15 @@ also be embedded for specialized use cases.
 
 ## Coordinated breaking release
 
-The next release adopts declared label ownership by exact Cedar resource type
+The coordinated release adopts declared label ownership by exact Cedar resource type
 and attribute. Early Treetop releases prioritize correctness over compatibility;
 ambiguous ownership, deprecated aliases, and old-format defaults are removed.
 Bundle/module format 2 requires rebuilt and re-signed archives.
 
-This coordinated candidate is under review and has not been released. See the
-[breaking migration and review set](../MIGRATION.md) for the new syntax, required consumer
-updates, and ordered rollout. PR readiness does not authorize merging or release.
+Core, Bundle, REST, Rust/Python clients, CLI, and Workbench are released as 0.1.0;
+the Go client is 0.3.0 and Bundle Action is v2. See the
+[breaking migration and release set](../MIGRATION.md) for the new syntax, required consumer
+updates, published artifacts, and upgrade order.
 
 ## Projects
 
@@ -36,7 +37,7 @@ client integrations, and operator tooling.
 | [treetop-cli](https://github.com/treetop-policy-engine/treetop-cli) | Command-line client and interactive REPL | [native archives and checksums](https://github.com/treetop-policy-engine/treetop-cli/releases/latest) |
 | [treetop-frontend](https://github.com/treetop-policy-engine/treetop-frontend) | Browser workbench for policies, requests, and metrics | [static archive and checksum](https://github.com/treetop-policy-engine/treetop-frontend/releases/latest) · [container](https://github.com/treetop-policy-engine/treetop-frontend/pkgs/container/treetop-frontend) |
 | [treetop-bundle](https://github.com/treetop-policy-engine/treetop-bundle) | Deterministic, optionally signed Cedar policy bundles | [crate](https://crates.io/crates/treetop-bundle) · [docs](https://docs.rs/treetop-bundle) · [CLI archives](https://github.com/treetop-policy-engine/treetop-bundle/releases/latest) |
-| [treetop-bundle-action](https://github.com/treetop-policy-engine/treetop-bundle-action) | Policy validation and bundle builds in GitHub Actions | [v2 candidate](https://github.com/treetop-policy-engine/treetop-bundle-action/pull/8) · [releases](https://github.com/treetop-policy-engine/treetop-bundle-action/releases) |
+| [treetop-bundle-action](https://github.com/treetop-policy-engine/treetop-bundle-action) | Policy validation and bundle builds in GitHub Actions | [v2.0.0](https://github.com/treetop-policy-engine/treetop-bundle-action/releases/tag/v2.0.0) · [releases](https://github.com/treetop-policy-engine/treetop-bundle-action/releases) |
 | [treetop-core](https://github.com/treetop-policy-engine/treetop-core) | Rust engine underlying Treetop REST, also available for in-process deployments | [crate](https://crates.io/crates/treetop-core) · [docs](https://docs.rs/treetop-core) |
 
 ## Release artifacts
@@ -48,7 +49,7 @@ client integrations, and operator tooling.
 | Bundle CLI | Linux x86-64 and ARM64 musl, Apple-silicon macOS, and Windows x86-64 archives with `SHA256SUMS` |
 | Workbench | Versioned static-site archive with a SHA-256 checksum; Linux AMD64 and ARM64 container image |
 | Libraries and clients | Rust crates, Python on PyPI, and versioned Go modules |
-| Bundle Action | Versioned GitHub Action; v2 candidate awaiting coordinated release |
+| Bundle Action | Versioned GitHub Action; v2.0.0 with the v2 major tag |
 
 ## Quick start
 
@@ -66,12 +67,10 @@ Then check process liveness:
 curl http://127.0.0.1:9999/livez
 ```
 
-The [action v2 migration](https://github.com/treetop-policy-engine/treetop-bundle-action/pull/8)
-contains the reviewed candidate, declared-target syntax, and native installation
-checks. Until Bundle 0.1.0 is published, build the immutable candidate and supply
-its `binary-path`. After publication, pin the approved v2 action commit in policy
-workflows. The current published artifacts linked above remain separate from
-this unmerged candidate.
+The [action v2 migration](https://github.com/treetop-policy-engine/treetop-bundle-action/blob/v2.0.0/MIGRATION.md)
+explains declared-target syntax and format 2 archives. Action v2 downloads the
+published Bundle CLI 0.1.0 and verifies its checksum. Pin the reviewed immutable
+action release commit in protected policy workflows.
 
 Project-specific documentation, examples, current contracts, and release notes live in
 each repository.

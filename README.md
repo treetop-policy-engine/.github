@@ -60,14 +60,15 @@ right deployment model.
 
 ## Coordinated breaking release
 
-The next release adopts declared label ownership by exact Cedar resource type
+The coordinated release adopts declared label ownership by exact Cedar resource type
 and attribute. Early Treetop releases prioritize correctness over compatibility;
 ambiguous ownership, deprecated aliases, and old-format defaults are removed.
 Bundle/module format 2 requires rebuilt and re-signed archives.
 
-This coordinated candidate is under review and has not been released. See the
-[breaking migration and review set](./MIGRATION.md) for the new syntax, required consumer
-updates, and ordered rollout. PR readiness does not authorize merging or release.
+Core, Bundle, REST, Rust/Python clients, CLI, and Workbench are released as 0.1.0;
+the Go client is 0.3.0 and Bundle Action is v2. See the
+[breaking migration and release set](./MIGRATION.md) for the new syntax, required consumer
+updates, published artifacts, and upgrade order.
 
 ## Projects
 
