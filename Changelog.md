@@ -8,3 +8,4 @@
   repository. Add the Go client to the complete project catalog.
 - Link the full review set and distinguish candidates from published artifacts.
   All merges and releases remain subject to user approval.
+- Enforce Markdown and local document/asset links in a minimal read-only CI job.
