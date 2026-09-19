@@ -9,15 +9,15 @@ Updates remain in the linked pull requests unless marked as released below.
 | Repository | Review | Scope and publication status |
 | --- | --- | --- |
 | Core | [#66](https://github.com/treetop-policy-engine/treetop-core/pull/66) | Merged; [Core 0.2.0 published](https://crates.io/crates/treetop-core/0.2.0), with Cedar 4.13.0 and refreshed dependencies/actions |
-| Bundle | [#12](https://github.com/treetop-policy-engine/treetop-bundle/pull/12) | Candidate 0.2.0; uses published Core 0.2.0; Rust, fuzz, CLI, and action updates |
-| REST | [#82](https://github.com/treetop-policy-engine/treetop-rest/pull/82) | Candidate Core/Bundle 0.2.0 and Cedar 4.13.0; application/fuzz lockfiles and action updates |
+| Bundle | [#12](https://github.com/treetop-policy-engine/treetop-bundle/pull/12) | Merged; [Bundle 0.2.0 and native CLI published](https://github.com/treetop-policy-engine/treetop-bundle/releases/tag/v0.2.0) |
+| REST | [#82](https://github.com/treetop-policy-engine/treetop-rest/pull/82) | Open; published Core/Bundle 0.2.0 and Cedar 4.13.0; application/fuzz lockfiles and action updates |
 | Rust client | [#16](https://github.com/treetop-policy-engine/treetop-client/pull/16) | Open; dependencies, fuzz lockfile, actions, and Rust 1.93.1 minimum |
 | Python client | [#16](https://github.com/treetop-policy-engine/treetop-client-python/pull/16) | Open; build/type-check tools, lockfile, and actions |
 | Go client | [#5](https://github.com/treetop-policy-engine/treetop-client-go/pull/5) | Open; security and Markdown tools; no external module dependencies; actions already current |
 | CLI | [#10](https://github.com/treetop-policy-engine/treetop-cli/pull/10) | Open; dependencies, lockfile, actions, and pinned Rust builder image |
 | Frontend | [#5](https://github.com/treetop-policy-engine/treetop-frontend/pull/5) | Open; npm dependencies, lockfile, supported Node versions, and actions |
-| Bundle Action | [#9](https://github.com/treetop-policy-engine/treetop-bundle-action/pull/9) | Open; action pins and artifact upload example; Bundle CLI update follows its release |
-| Organization | This document | Documentation and action dependencies checked; existing pins already current |
+| Bundle Action | [#9](https://github.com/treetop-policy-engine/treetop-bundle-action/pull/9) | Open; Bundle CLI 0.2.0 default, immutable release source, action pins, and artifact upload example |
+| Organization | [#4](https://github.com/treetop-policy-engine/.github/pull/4) | Documentation and action dependencies checked; existing pins already current |
 
 No release is implied by an open dependency PR. REST, clients, CLI, frontend,
 and Bundle Action retain their existing published releases until separately
@@ -26,13 +26,17 @@ the migration reference for those artifacts.
 
 ## Core, Bundle, and REST rollout
 
-1. Publish Core 0.2.0 from the verified, merged Core commit.
-2. Replace Bundle's temporary Core source pin with the published registry crate,
-   verify packaging and CI, then publish Bundle 0.2.0 and native CLI archives.
-3. Resolve REST against both published 0.2.0 crates and commit registry checksums
-   in its application and fuzz lockfiles. Review and release REST separately.
-4. Update Bundle Action's default CLI and immutable verification source to Bundle
-   0.2.0 after its native archives and checksums are available.
+1. Completed: Core 0.2.0 is published from verified main commit
+   `6ebef45b46b1b725e48ab5704a64cf266da25860`.
+2. Completed: Bundle 0.2.0 uses the published Core crate and is released from
+   verified main commit `20c4661296cc23381bbce1d86a94949311823a11`. All four
+   native CLI archives and `SHA256SUMS` are published.
+3. REST's open PR resolves both published crates, with registry checksums in its
+   application and fuzz lockfiles. Review and release REST separately.
+4. Bundle Action's open PR defaults to published CLI 0.2.0 and verifies its exact
+   release source. This archive-compatibility change requires a new major Action
+   release after review. Existing v2/v2.0.0 contracts remain fixed; users can
+   explicitly select `binary-version: 0.2.0` with the published action.
 
 Rebuild and re-sign policy archives with Bundle CLI 0.2.0 before deploying the
 updated REST server. Archive generator metadata must match Bundle/Core 0.2.0

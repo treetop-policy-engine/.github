@@ -18,14 +18,14 @@ and attribute. Early Treetop releases prioritize correctness over compatibility;
 ambiguous ownership, deprecated aliases, and old-format defaults are removed.
 Bundle/module format 2 requires rebuilt and re-signed archives.
 
-Core, Bundle, REST, Rust/Python clients, CLI, and Workbench are released as 0.1.0;
+The September 6 release shipped Core, Bundle, REST, Rust/Python clients, CLI, and Workbench as 0.1.0;
 the Go client is 0.3.0 and Bundle Action is v2. See the
 [breaking migration and release set](../MIGRATION.md) for the new syntax, required consumer
 updates, published artifacts, and upgrade order.
 
 ## September 2026 dependency refresh
 
-Core and Bundle 0.2.0 are being prepared for Cedar 4.13.0. The
+Core and Bundle 0.2.0 are published with Cedar 4.13.0. The
 [dependency refresh status and migration notes](../DEPENDENCIES.md) track every repository,
 release prerequisites, and toolchain changes. Open update PRs do not change the
 versions of already published artifacts.
