@@ -70,6 +70,13 @@ the Go client is 0.3.0 and Bundle Action is v2. See the
 [breaking migration and release set](./MIGRATION.md) for the new syntax, required consumer
 updates, published artifacts, and upgrade order.
 
+## September 2026 dependency refresh
+
+Core and Bundle 0.2.0 are being prepared for Cedar 4.13.0. The
+[dependency refresh status and migration notes](./DEPENDENCIES.md) track every repository,
+release prerequisites, and toolchain changes. Open update PRs do not change the
+versions of already published artifacts.
+
 ## Projects
 
 All repositories below are maintained parts of the Treetop project. Together they provide the REST
