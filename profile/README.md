@@ -27,8 +27,8 @@ updates, published artifacts, and upgrade order.
 
 Core and Bundle 0.2.0 are published with Cedar 4.13.0. The
 [dependency refresh status and migration notes](../DEPENDENCIES.md) track every repository,
-release prerequisites, and toolchain changes. Open update PRs do not change the
-versions of already published artifacts.
+release prerequisites, and toolchain changes. The dependency updates are merged;
+versioned releases beyond Core and Bundle remain separate.
 
 ## Projects
 

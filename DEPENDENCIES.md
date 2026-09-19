@@ -2,7 +2,9 @@
 
 This refresh covers all ten repositories in `treetop-policy-engine`. Package
 registries, upstream releases, and action commits were checked on 2026-09-19.
-Updates remain in the linked pull requests unless marked as released below.
+The implementation updates were squash-merged in dependency order on 2026-09-19.
+Core and Bundle 0.2.0 are published; the other updates are on `main` and await
+separate versioned releases.
 
 ## Repository status
 
@@ -10,18 +12,18 @@ Updates remain in the linked pull requests unless marked as released below.
 | --- | --- | --- |
 | Core | [#66](https://github.com/treetop-policy-engine/treetop-core/pull/66) | Merged; [Core 0.2.0 published](https://crates.io/crates/treetop-core/0.2.0), with Cedar 4.13.0 and refreshed dependencies/actions |
 | Bundle | [#12](https://github.com/treetop-policy-engine/treetop-bundle/pull/12) | Merged; [Bundle 0.2.0 and native CLI published](https://github.com/treetop-policy-engine/treetop-bundle/releases/tag/v0.2.0) |
-| REST | [#82](https://github.com/treetop-policy-engine/treetop-rest/pull/82) | Open; published Core/Bundle 0.2.0 and Cedar 4.13.0; application/fuzz lockfiles and action updates |
-| Rust client | [#16](https://github.com/treetop-policy-engine/treetop-client/pull/16) | Open; dependencies, fuzz lockfile, actions, and Rust 1.93.1 minimum |
-| Python client | [#16](https://github.com/treetop-policy-engine/treetop-client-python/pull/16) | Open; build/type-check tools, lockfile, and actions |
-| Go client | [#5](https://github.com/treetop-policy-engine/treetop-client-go/pull/5) | Open; security and Markdown tools; no external module dependencies; actions already current |
-| CLI | [#10](https://github.com/treetop-policy-engine/treetop-cli/pull/10) | Open; dependencies, lockfile, actions, and pinned Rust builder image |
-| Frontend | [#5](https://github.com/treetop-policy-engine/treetop-frontend/pull/5) | Open; npm dependencies, lockfile, supported Node versions, and actions |
-| Bundle Action | [#9](https://github.com/treetop-policy-engine/treetop-bundle-action/pull/9) | Open; Bundle CLI 0.2.0 default, immutable release source, action pins, and artifact upload example |
+| REST | [#82](https://github.com/treetop-policy-engine/treetop-rest/pull/82) | Merged; published Core/Bundle 0.2.0 and Cedar 4.13.0; application/fuzz lockfiles and action updates |
+| Rust client | [#16](https://github.com/treetop-policy-engine/treetop-client/pull/16) | Merged; dependencies, fuzz lockfile, actions, and Rust 1.93.1 minimum |
+| Python client | [#16](https://github.com/treetop-policy-engine/treetop-client-python/pull/16) | Merged; build/type-check tools, lockfile, and actions |
+| Go client | [#5](https://github.com/treetop-policy-engine/treetop-client-go/pull/5) | Merged; security and Markdown tools; no external module dependencies; actions already current |
+| CLI | [#10](https://github.com/treetop-policy-engine/treetop-cli/pull/10) | Merged; dependencies, lockfile, actions, and pinned Rust builder image |
+| Frontend | [#5](https://github.com/treetop-policy-engine/treetop-frontend/pull/5) | Merged; npm dependencies, lockfile, supported Node versions, and actions |
+| Bundle Action | [#9](https://github.com/treetop-policy-engine/treetop-bundle-action/pull/9) | Merged; Bundle CLI 0.2.0 default, immutable release source, action pins, and artifact upload example |
 | Organization | [#4](https://github.com/treetop-policy-engine/.github/pull/4) | Documentation and action dependencies checked; existing pins already current |
 
-No release is implied by an open dependency PR. REST, clients, CLI, frontend,
-and Bundle Action retain their existing published releases until separately
-reviewed and released. The [previous coordinated release](MIGRATION.md) remains
+A merged dependency update does not create a versioned release. REST, clients,
+CLI, frontend, and Bundle Action retain their existing published releases until
+separate release preparation and publication. The [previous coordinated release](MIGRATION.md) remains
 the migration reference for those artifacts.
 
 ## Core, Bundle, and REST rollout
@@ -31,11 +33,12 @@ the migration reference for those artifacts.
 2. Completed: Bundle 0.2.0 uses the published Core crate and is released from
    verified main commit `20c4661296cc23381bbce1d86a94949311823a11`. All four
    native CLI archives and `SHA256SUMS` are published.
-3. REST's open PR resolves both published crates, with registry checksums in its
-   application and fuzz lockfiles. Review and release REST separately.
-4. Bundle Action's open PR defaults to published CLI 0.2.0 and verifies its exact
-   release source. This archive-compatibility change requires a new major Action
-   release after review. Existing v2/v2.0.0 contracts remain fixed; users can
+3. Completed: REST's merged update resolves both published crates, with registry
+   checksums in its application and fuzz lockfiles. Prepare and release the next
+   server version separately.
+4. Completed: Bundle Action's merged update defaults to published CLI 0.2.0 and
+   verifies its exact release source. This archive-compatibility change requires
+   a new major Action release. Existing v2/v2.0.0 contracts remain fixed; users can
    explicitly select `binary-version: 0.2.0` with the published action.
 
 Rebuild and re-sign policy archives with Bundle CLI 0.2.0 before deploying the
@@ -47,6 +50,15 @@ consumers must support array-valued `attr` for nested `has` expressions.
 Cedar 4.13 classifies invalid action applications as warnings. Core and Bundle
 preserve Treetop's strict validation contract by rejecting these diagnostics as
 errors. Other Bundle warnings retain their existing `deny_warnings` behavior.
+
+## Merge order
+
+Core and Bundle were merged and released first. The remaining implementation PRs
+were then squash-merged as REST, Rust/Python/Go clients, CLI, frontend, and Bundle
+Action, followed by this organization record. Each merge used the verified PR
+head and retained substantive rationale and migration notes in its squash body.
+Published REST/client integration pins remain intentional prerequisites for
+consumer checks; merging a newer implementation does not move those releases.
 
 ## Toolchain and compatibility constraints
 
