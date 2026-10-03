@@ -66,17 +66,20 @@ ambiguous ownership, deprecated aliases, and old-format defaults are removed.
 Bundle/module format 2 requires rebuilt and re-signed archives.
 
 The September 6 release shipped Core, Bundle, REST, Rust/Python clients, CLI, and Workbench as 0.1.0;
-the Go client is 0.3.0 and Bundle Action is v2. See the
+the Go client shipped as 0.3.0 and Bundle Action as v2. See the
 [breaking migration and release set](./MIGRATION.md) for the new syntax, required consumer
 updates, published artifacts, and upgrade order.
 
-## Core 0.3.0 dependency refresh
+## Current coordinated releases
 
-Core and Bundle 0.3.0 are published with Cedar 4.13.0. The
-[dependency refresh status and migration notes](./DEPENDENCIES.md) track every repository,
-archive rebuild requirements, the Utoipa 6 migration, and immutable REST source
-pins. HTTP JSON is unchanged; existing strict-contract SDKs need no model changes.
-Versioned releases beyond Core and Bundle remain separate.
+Core and Bundle 0.3.0 are published with Cedar 4.13.0. REST, the Rust client,
+CLI, and Workbench are now 0.2.0; Python is 0.1.1, Go is 0.3.1, and Bundle
+Action is v3. The [release set and migration notes](./DEPENDENCIES.md) link every
+artifact, review, and immutable server pin.
+
+Rebuild and re-sign policy archives with Bundle CLI 0.3.0 before upgrading REST.
+Rust SDK/CLI builds require Rust 1.93.1 or newer. HTTP request and decision JSON
+are unchanged; the Utoipa 6 migration applies to Rust schema integrations.
 
 ## Projects
 

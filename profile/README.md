@@ -19,17 +19,20 @@ ambiguous ownership, deprecated aliases, and old-format defaults are removed.
 Bundle/module format 2 requires rebuilt and re-signed archives.
 
 The September 6 release shipped Core, Bundle, REST, Rust/Python clients, CLI, and Workbench as 0.1.0;
-the Go client is 0.3.0 and Bundle Action is v2. See the
+the Go client shipped as 0.3.0 and Bundle Action as v2. See the
 [breaking migration and release set](../MIGRATION.md) for the new syntax, required consumer
 updates, published artifacts, and upgrade order.
 
-## Core 0.3.0 dependency refresh
+## Current coordinated releases
 
-Core and Bundle 0.3.0 are published with Cedar 4.13.0. The
-[dependency refresh status and migration notes](../DEPENDENCIES.md) track every repository,
-archive rebuild requirements, the Utoipa 6 migration, and immutable REST source
-pins. HTTP JSON is unchanged; existing strict-contract SDKs need no model changes.
-Versioned releases beyond Core and Bundle remain separate.
+Core and Bundle 0.3.0 are published with Cedar 4.13.0. REST, the Rust client,
+CLI, and Workbench are now 0.2.0; Python is 0.1.1, Go is 0.3.1, and Bundle
+Action is v3. The [release set and migration notes](../DEPENDENCIES.md) link every
+artifact, review, and immutable server pin.
+
+Rebuild and re-sign policy archives with Bundle CLI 0.3.0 before upgrading REST.
+Rust SDK/CLI builds require Rust 1.93.1 or newer. HTTP request and decision JSON
+are unchanged; the Utoipa 6 migration applies to Rust schema integrations.
 
 ## Projects
 
@@ -45,7 +48,7 @@ client integrations, and operator tooling.
 | [treetop-cli](https://github.com/treetop-policy-engine/treetop-cli) | Command-line client and interactive REPL | [native archives and checksums](https://github.com/treetop-policy-engine/treetop-cli/releases/latest) |
 | [treetop-frontend](https://github.com/treetop-policy-engine/treetop-frontend) | Browser workbench for policies, requests, and metrics | [static archive and checksum](https://github.com/treetop-policy-engine/treetop-frontend/releases/latest) · [container](https://github.com/treetop-policy-engine/treetop-frontend/pkgs/container/treetop-frontend) |
 | [treetop-bundle](https://github.com/treetop-policy-engine/treetop-bundle) | Deterministic, optionally signed Cedar policy bundles | [crate](https://crates.io/crates/treetop-bundle) · [docs](https://docs.rs/treetop-bundle) · [CLI archives](https://github.com/treetop-policy-engine/treetop-bundle/releases/latest) |
-| [treetop-bundle-action](https://github.com/treetop-policy-engine/treetop-bundle-action) | Policy validation and bundle builds in GitHub Actions | [v2.0.0](https://github.com/treetop-policy-engine/treetop-bundle-action/releases/tag/v2.0.0) · [releases](https://github.com/treetop-policy-engine/treetop-bundle-action/releases) |
+| [treetop-bundle-action](https://github.com/treetop-policy-engine/treetop-bundle-action) | Policy validation and bundle builds in GitHub Actions | [v3.0.0](https://github.com/treetop-policy-engine/treetop-bundle-action/releases/tag/v3.0.0) · [releases](https://github.com/treetop-policy-engine/treetop-bundle-action/releases) |
 | [treetop-core](https://github.com/treetop-policy-engine/treetop-core) | Rust engine underlying Treetop REST, also available for in-process deployments | [crate](https://crates.io/crates/treetop-core) · [docs](https://docs.rs/treetop-core) |
 
 ## Release artifacts
@@ -57,7 +60,7 @@ client integrations, and operator tooling.
 | Bundle CLI | Linux x86-64 and ARM64 musl, Apple-silicon macOS, and Windows x86-64 archives with `SHA256SUMS` |
 | Workbench | Versioned static-site archive with a SHA-256 checksum; Linux AMD64 and ARM64 container image |
 | Libraries and clients | Rust crates, Python on PyPI, and versioned Go modules |
-| Bundle Action | Versioned GitHub Action; v2.0.0 with the v2 major tag |
+| Bundle Action | Versioned GitHub Action; v3.0.0 with the v3 major tag |
 
 ## Quick start
 
@@ -75,10 +78,11 @@ Then check process liveness:
 curl http://127.0.0.1:9999/livez
 ```
 
-The [action v2 migration](https://github.com/treetop-policy-engine/treetop-bundle-action/blob/v2.0.0/MIGRATION.md)
-explains declared-target syntax and format 2 archives. Action v2 downloads the
-published Bundle CLI 0.1.0 and verifies its checksum. Pin the reviewed immutable
-action release commit in protected policy workflows.
+The [Action v3 migration](https://github.com/treetop-policy-engine/treetop-bundle-action/blob/v3.0.0/MIGRATION.md)
+explains the required archive rebuild. Action v3 downloads published Bundle CLI
+0.3.0 and verifies its checksum. Pin the reviewed immutable Action release commit
+`129eb4612dff4903e33cddb3cc9e0db131c3dfb6` in protected policy workflows. Existing
+v2 tags retain their original CLI 0.1.0 default.
 
 Project-specific documentation, examples, current contracts, and release notes live in
 each repository.
