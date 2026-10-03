@@ -23,12 +23,13 @@ the Go client is 0.3.0 and Bundle Action is v2. See the
 [breaking migration and release set](../MIGRATION.md) for the new syntax, required consumer
 updates, published artifacts, and upgrade order.
 
-## September 2026 dependency refresh
+## Core 0.3.0 dependency refresh
 
-Core and Bundle 0.2.0 are published with Cedar 4.13.0. The
+Core and Bundle 0.3.0 are published with Cedar 4.13.0. The
 [dependency refresh status and migration notes](../DEPENDENCIES.md) track every repository,
-release prerequisites, and toolchain changes. The dependency updates are merged;
-versioned releases beyond Core and Bundle remain separate.
+archive rebuild requirements, the Utoipa 6 migration, and immutable REST source
+pins. HTTP JSON is unchanged; existing strict-contract SDKs need no model changes.
+Versioned releases beyond Core and Bundle remain separate.
 
 ## Projects
 
