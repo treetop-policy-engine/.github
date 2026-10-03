@@ -2,6 +2,13 @@
 
 ## 2026-10-03
 
+- Publish the completed coordinated release record: REST/Rust client/CLI/Workbench
+  0.2.0, Python 0.1.1, Go 0.3.1, and Bundle Action 3.0.0 with Core/Bundle 0.3.0.
+- Link verified artifacts, signed release reviews, the immutable REST image and
+  source commit, and Action v3. Explain toolchain upgrades and archive rebuilds.
+- Record the REST benchmark-tool compatibility holdback and distinguish September
+  implementation history from the current published release set.
+
 - Document the published Core/Bundle 0.3.0 release and coordinated REST, Action,
   and frontend updates, with immutable source pins and review links.
 - Explain the Utoipa 6 and `Arc<PolicyJson>` Rust migrations, unchanged HTTP JSON,

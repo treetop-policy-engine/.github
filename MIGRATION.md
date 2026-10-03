@@ -2,8 +2,8 @@
 
 Released 2026-09-06 after coordinated review and verification. This document is
 the organization announcement, breaking migration guide, and upgrade order.
-For the current Core/Bundle 0.3.0 rollout and prior Cedar 4.13 refresh, see the
-[dependency rollout notes](DEPENDENCIES.md).
+For the published Core/Bundle 0.3.0 release set, current client versions, and
+required archive/toolchain upgrades, see the [current release notes](DEPENDENCIES.md).
 
 Early Treetop releases prioritize correctness over compatibility across every
 repository. Breaking changes must be intentional, tested, announced, and supplied
