@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-10-03
+
+- Document the published Core/Bundle 0.3.0 release and coordinated REST, Action,
+  and frontend updates, with immutable source pins and review links.
+- Explain the Utoipa 6 and `Arc<PolicyJson>` Rust migrations, unchanged HTTP JSON,
+  and required archive rebuild/signing steps. Keep existing artifact versions and
+  Action v2 defaults distinct from main-branch updates.
+- Update both project entry points and retain the September dependency history.
+
 ## 2026-09-06
 
 - Announce the coordinated breaking release with declared tuple ownership,
