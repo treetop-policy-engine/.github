@@ -72,14 +72,12 @@ updates, published artifacts, and upgrade order.
 
 ## Current coordinated releases
 
-Core and Bundle 0.3.0 are published with Cedar 4.13.0. REST, the Rust client,
-CLI, and Workbench are now 0.2.0; Python is 0.1.1, Go is 0.3.1, and Bundle
-Action is v3. The [release set and migration notes](./DEPENDENCIES.md) link every
-artifact, review, and immutable server pin.
+Core and Bundle 0.4.0 use Cedar 4.15.0. Before deploying REST 0.3.0, rebuild
+and re-sign policy archives with Bundle CLI 0.4.0 or Bundle Action v4.
 
-Rebuild and re-sign policy archives with Bundle CLI 0.3.0 before upgrading REST.
-Rust SDK/CLI builds require Rust 1.93.1 or newer. HTTP request and decision JSON
-are unchanged; the Utoipa 6 migration applies to Rust schema integrations.
+Rust SDK 0.2.1, Python SDK 0.1.2, Go SDK 0.4.0 and Workbench 0.2.1 target
+REST 0.3.0. CLI 0.3.0 uses Rust SDK 0.2.1 and requires Rust 1.95.0 for source
+builds. [Release downloads, immutable pins, and migration notes](DEPENDENCIES.md).
 
 ## Projects
 
