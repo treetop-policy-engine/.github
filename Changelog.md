@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-25
+
+- Publish the nine coordinated releases. The [release catalog](DEPENDENCIES.md)
+  lists each signed tag, release commit, pull request, and distribution.
+- Rebuild and re-sign policy archives with Bundle CLI 0.4.0 before deploying
+  REST 0.3.0. Upgrade workflows to Bundle Action v4 for these archives.
+- Record the patched Go toolchains, the CLI source-build minimum, and the
+  narrowly scoped Chrono advisory and foldhash license exceptions.
+
 ## 2026-10-03
 
 - Publish the completed coordinated release record: REST/Rust client/CLI/Workbench

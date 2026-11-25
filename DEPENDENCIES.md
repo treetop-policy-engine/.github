@@ -1,40 +1,61 @@
-# Core 0.3.0 coordinated releases
+# Coordinated releases
 
-Core 0.3.0 was released on 2026-10-02. Bundle 0.3.0 and the coordinated downstream
-releases followed on 2026-10-03. Published dependencies, signed release tags, and
-immutable server pins connect the full release set.
+## November 2026 release set
 
-## November maintenance release order
+The published versions below share the REST 0.3.0 contract. Each signed tag identifies
+the green main commit used to build its release.
 
-The October versions below are the latest published set. The November dependency
-updates are in progress. Publish and verify each prerequisite before updating
-its consumers.
+| Project | Release | Maintenance and release PRs | Release commit | Distribution |
+| --- | --- | --- | --- | --- |
+| Core | [0.4.0](https://github.com/treetop-policy-engine/treetop-core/releases/tag/v0.4.0) | [#88](https://github.com/treetop-policy-engine/treetop-core/pull/88), [#89](https://github.com/treetop-policy-engine/treetop-core/pull/89) | [`2887b618ed52`](https://github.com/treetop-policy-engine/treetop-core/commit/2887b618ed52a495774dd54d5c7b107d505e094b) | Rust crate with Cedar 4.15.0 |
+| Bundle | [0.4.0](https://github.com/treetop-policy-engine/treetop-bundle/releases/tag/v0.4.0) | [#14](https://github.com/treetop-policy-engine/treetop-bundle/pull/14) | [`ade0f9484b32`](https://github.com/treetop-policy-engine/treetop-bundle/commit/ade0f9484b32cf61fb2d70c23bbf18ac24ae6453) | Rust crate, four native CLI archives and checksums |
+| Bundle Action | [4.0.0](https://github.com/treetop-policy-engine/treetop-bundle-action/releases/tag/v4.0.0) | [#17](https://github.com/treetop-policy-engine/treetop-bundle-action/pull/17), [#18](https://github.com/treetop-policy-engine/treetop-bundle-action/pull/18) | [`145b69752ed7`](https://github.com/treetop-policy-engine/treetop-bundle-action/commit/145b69752ed7daaf4fe1071f0fc6e5c6e2899e0d) | Action v4 with Bundle CLI 0.4.0 |
+| REST | [0.3.0](https://github.com/treetop-policy-engine/treetop-rest/releases/tag/v0.3.0) | [#114](https://github.com/treetop-policy-engine/treetop-rest/pull/114), [#115](https://github.com/treetop-policy-engine/treetop-rest/pull/115) | [`e80f966472d6`](https://github.com/treetop-policy-engine/treetop-rest/commit/e80f966472d68af3faf17ef2b645ce5aa35d1d0e) | Server archives for Linux x86-64 and ARM64, plus the GHCR image |
+| Rust SDK | [0.2.1](https://github.com/treetop-policy-engine/treetop-client/releases/tag/v0.2.1) | [#20](https://github.com/treetop-policy-engine/treetop-client/pull/20), [#21](https://github.com/treetop-policy-engine/treetop-client/pull/21), [#22](https://github.com/treetop-policy-engine/treetop-client/pull/22) | [`0642a1ee70c3`](https://github.com/treetop-policy-engine/treetop-client/commit/0642a1ee70c3046d776cb4558a2c2b819000e6b8) | Rust crate for Rust 1.93.1 and newer |
+| Python SDK | [0.1.2](https://github.com/treetop-policy-engine/treetop-client-python/releases/tag/v0.1.2) | [#24](https://github.com/treetop-policy-engine/treetop-client-python/pull/24), [#25](https://github.com/treetop-policy-engine/treetop-client-python/pull/25) | [`4a1a450107d6`](https://github.com/treetop-policy-engine/treetop-client-python/commit/4a1a450107d651fa32e730d25786cba098234fd7) | PyPI wheel and source distribution for Python 3.12 and newer |
+| Go SDK | [0.4.0](https://github.com/treetop-policy-engine/treetop-client-go/releases/tag/v0.4.0) | [#8](https://github.com/treetop-policy-engine/treetop-client-go/pull/8), [#9](https://github.com/treetop-policy-engine/treetop-client-go/pull/9) | [`3e06b95f0eb9`](https://github.com/treetop-policy-engine/treetop-client-go/commit/3e06b95f0eb93cc77bcaa66746e461b76443c8c3) | Go module with the patched standard library requirement |
+| CLI | [0.3.0](https://github.com/treetop-policy-engine/treetop-cli/releases/tag/v0.3.0) | [#20](https://github.com/treetop-policy-engine/treetop-cli/pull/20), [#21](https://github.com/treetop-policy-engine/treetop-cli/pull/21), [#22](https://github.com/treetop-policy-engine/treetop-cli/pull/22) | [`3ff56021b5d1`](https://github.com/treetop-policy-engine/treetop-cli/commit/3ff56021b5d1c241f909c1a5319a2607dade4df1) | Four native archives with checksums, built against Rust SDK 0.2.1 |
+| Workbench | [0.2.1](https://github.com/treetop-policy-engine/treetop-frontend/releases/tag/v0.2.1) | [#9](https://github.com/treetop-policy-engine/treetop-frontend/pull/9), [#10](https://github.com/treetop-policy-engine/treetop-frontend/pull/10) | [`932800754f5a`](https://github.com/treetop-policy-engine/treetop-frontend/commit/932800754f5abf5b1ada41f6f08b5224b51e22a8) | Static distribution and container built against the REST release contract |
 
-| Prerequisite | Consumers and pins to update |
-| --- | --- |
-| Core crate | Bundle library and CLI use the exact Core and Cedar versions. |
-| Bundle crate and native releases | REST links the Core and Bundle crates. Bundle Action verifies the released CLI archives. |
-| REST container, archives, and source | The Rust, Go, and Python SDKs test the released image. Workbench generates its API and runs live tests against the released source. |
-| Rust SDK crate and REST image | CLI uses the exact SDK version and tests against the released server. |
+### Upgrade order and compatibility
 
-The [Core update](https://github.com/treetop-policy-engine/treetop-core/pull/88)
-removes its direct Humantime dependency. Cedar 4.15.0 still uses Chrono, which
-[the RustSec advisory](https://rustsec.org/advisories/RUSTSEC-2026-0543.html)
-lists as unmaintained. The [upstream replacement](https://github.com/cedar-policy/cedar/pull/2728)
-is under review. [Bundle](https://github.com/treetop-policy-engine/treetop-bundle/pull/14)
-and [REST](https://github.com/treetop-policy-engine/treetop-rest/pull/114)
-track the dependent updates.
+1. Adopt Core and Bundle 0.4.0 together. Align direct Cedar pins to 4.15.0.
+2. Rebuild archives from format 2 source manifests with Bundle CLI 0.4.0 and
+   re-sign them. Workflows using Bundle Action can use the verified v4 release
+   commit `145b69752ed7daaf4fe1071f0fc6e5c6e2899e0d`.
+3. Deploy REST 0.3.0. Applications constructing server metadata in Rust should
+   use `jiff::Timestamp` for `Metadata.timestamp` and `BundleMetadata.loaded_at`.
+   The HTTP fields use RFC 3339.
+4. Upgrade SDKs and Workbench. Build the Go module with Go 1.26.11+ on the
+   1.26 line or 1.27.4+ on the 1.27 line. Source builds of the CLI require Rust
+   1.95.0 or later and the published Rust SDK 0.2.1.
 
-| Other November updates | Pull request |
-| --- | --- |
-| Rust SDK | [Dependencies and CI](https://github.com/treetop-policy-engine/treetop-client/pull/20) |
-| Python SDK | [Certificate data and CI](https://github.com/treetop-policy-engine/treetop-client-python/pull/24) |
-| Go SDK | [Patched Go toolchains](https://github.com/treetop-policy-engine/treetop-client-go/pull/8) |
-| CLI | [Dependencies and platform checks](https://github.com/treetop-policy-engine/treetop-cli/pull/20) |
-| Workbench | [nginx and frontend packages](https://github.com/treetop-policy-engine/treetop-frontend/pull/9) |
-| Bundle Action | [Artifact upload example](https://github.com/treetop-policy-engine/treetop-bundle-action/pull/17) |
+The SDKs and CLI verify the released server image by digest. Workbench pins its
+source commit for API generation, live tests, and demos.
 
-## Published release set
+```text
+ghcr.io/treetop-policy-engine/treetop-rest@sha256:69d8cde73510f0219a0359f5baa5cf049f98b8eab87148540e72ac385725c772
+```
+
+### Security and dependency policy
+
+REST updates Rustls and Zip in the server and fuzz lockfiles and removes unused
+Actix cookie support. Bundle updates ctutils and rustix. Bundle Action enforces
+the 128 MiB download limit during streaming. Workbench updates its nginx runtime
+to 1.30.8. Go users must rebuild with a patched toolchain for GO-2026-6859.
+
+Core, Bundle, and REST temporarily allow the Chrono maintenance notice
+`RUSTSEC-2026-0543` from Cedar’s datetime dependency. Remove the exception
+when Cedar publishes its replacement. All other audit warnings and vulnerability
+checks continue to block. [Upstream Cedar change](https://github.com/cedar-policy/cedar/pull/2728).
+
+Bundle’s license policy allows Zlib only for `foldhash` 0.2.0, used by the
+ordered maps in serde_json 1.0.154. Review this exception on any version change.
+
+Workbench uses TypeScript 5.9.3 to satisfy the TypeScript 5 peer dependency in
+openapi-typescript 7.13.0.
+
+## October 2026 release set
 
 | Repository | Version | Distribution and contract |
 | --- | --- | --- |
@@ -78,7 +99,7 @@ nested `has` expressions. Invalid action applications remain validation errors.
 For label syntax, required response metadata, and endpoint migrations, see the
 [original coordinated migration](MIGRATION.md).
 
-## Release verification and immutable pins
+## October release verification and immutable pins
 
 Core 0.3.0 was released from `ac5a2a60c726ff399a18c6072f9641851be23145`;
 Bundle 0.3.0 was released from `d46c2502e2e71b91b4eaa23bef43f36b27e8800b`.
