@@ -25,6 +25,15 @@ is under review. [Bundle](https://github.com/treetop-policy-engine/treetop-bundl
 and [REST](https://github.com/treetop-policy-engine/treetop-rest/pull/114)
 track the dependent updates.
 
+| Other November updates | Pull request |
+| --- | --- |
+| Rust SDK | [Dependencies and CI](https://github.com/treetop-policy-engine/treetop-client/pull/20) |
+| Python SDK | [Certificate data and CI](https://github.com/treetop-policy-engine/treetop-client-python/pull/24) |
+| Go SDK | [Patched Go toolchains](https://github.com/treetop-policy-engine/treetop-client-go/pull/8) |
+| CLI | [Dependencies and platform checks](https://github.com/treetop-policy-engine/treetop-cli/pull/20) |
+| Workbench | [nginx and frontend packages](https://github.com/treetop-policy-engine/treetop-frontend/pull/9) |
+| Bundle Action | [Artifact upload example](https://github.com/treetop-policy-engine/treetop-bundle-action/pull/17) |
+
 ## Published release set
 
 | Repository | Version | Distribution and contract |
