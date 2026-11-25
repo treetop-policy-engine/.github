@@ -4,6 +4,36 @@ Core 0.3.0 was released on 2026-10-02. Bundle 0.3.0 and the coordinated downstre
 releases followed on 2026-10-03. Published dependencies, signed release tags, and
 immutable server pins connect the full release set.
 
+## November maintenance release order
+
+The October versions below are the latest published set. The November dependency
+updates are in progress. Publish and verify each prerequisite before updating
+its consumers.
+
+| Prerequisite | Consumers and pins to update |
+| --- | --- |
+| Core crate | Bundle library and CLI use the exact Core and Cedar versions. |
+| Bundle crate and native releases | REST links the Core and Bundle crates. Bundle Action verifies the released CLI archives. |
+| REST container, archives, and source | The Rust, Go, and Python SDKs test the released image. Workbench generates its API and runs live tests against the released source. |
+| Rust SDK crate and REST image | CLI uses the exact SDK version and tests against the released server. |
+
+The [Core update](https://github.com/treetop-policy-engine/treetop-core/pull/88)
+removes its direct Humantime dependency. Cedar 4.15.0 still uses Chrono, which
+[the RustSec advisory](https://rustsec.org/advisories/RUSTSEC-2026-0543.html)
+lists as unmaintained. The [upstream replacement](https://github.com/cedar-policy/cedar/pull/2728)
+is under review. [Bundle](https://github.com/treetop-policy-engine/treetop-bundle/pull/14)
+and [REST](https://github.com/treetop-policy-engine/treetop-rest/pull/114)
+track the dependent updates.
+
+| Other November updates | Pull request |
+| --- | --- |
+| Rust SDK | [Dependencies and CI](https://github.com/treetop-policy-engine/treetop-client/pull/20) |
+| Python SDK | [Certificate data and CI](https://github.com/treetop-policy-engine/treetop-client-python/pull/24) |
+| Go SDK | [Patched Go toolchains](https://github.com/treetop-policy-engine/treetop-client-go/pull/8) |
+| CLI | [Dependencies and platform checks](https://github.com/treetop-policy-engine/treetop-cli/pull/20) |
+| Workbench | [nginx and frontend packages](https://github.com/treetop-policy-engine/treetop-frontend/pull/9) |
+| Bundle Action | [Artifact upload example](https://github.com/treetop-policy-engine/treetop-bundle-action/pull/17) |
+
 ## Published release set
 
 | Repository | Version | Distribution and contract |

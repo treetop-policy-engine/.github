@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: 24
       - name: Lint Markdown
-        run: npx --yes markdownlint-cli2@0.24.1 --config .markdownlint.json '**/*.md'
+        run: npx --yes markdownlint-cli2@0.24.2 --config .markdownlint.json '**/*.md'
       - name: Check local document and asset links
         run: |
           node --input-type=module <<'JS'
